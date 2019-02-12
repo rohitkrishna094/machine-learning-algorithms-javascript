@@ -27,7 +27,7 @@ function setup() {
     if (y < lineDef(x)) answer = -1;
     training[i] = new Trainer(x, y, answer);
   }
-  // smooth();
+  smooth();
 }
 
 function draw() {
@@ -48,9 +48,7 @@ function draw() {
   stroke(0);
   strokeWeight(1);
   const weights = ptron.weights;
-  x1 = xmin;
   y1 = (-weights[2] - weights[0] * x1) / weights[1];
-  x2 = xmax;
   y2 = (-weights[2] - weights[0] * x2) / weights[1];
   line(x1, y1, x2, y2);
 
