@@ -1,8 +1,8 @@
-const numPoints = 200;
+const numPoints = 1;
 let training = Array(numPoints);
 let ptron;
 let count = 0;
-const learningRate = 0.00001;
+const learningRate = 0.0001;
 
 const xmin = -400;
 const ymin = -100;
@@ -31,7 +31,17 @@ function setup() {
   smooth();
 }
 
+function mousePressed() {
+  const x = mouseX - width / 2;
+  const y = mouseY - height / 2;
+  let answer = 1;
+  if (y > lineDef(x)) answer = -1;
+  const trnr = new Trainer(x, y, answer);
+  training.push(trnr);
+}
+
 function draw() {
+  console.log(training.length);
   background(255);
   translate(width / 2, height / 2);
 
@@ -60,7 +70,7 @@ function draw() {
   // draw all the points based on what the perceptron would guess
   // does not use the known correct answer
   // for (let i = 0; i < count; i++) {
-  for (let i = 0; i < numPoints; i++) {
+  for (let i = 0; i < training.length; i++) {
     stroke(0);
     strokeWeight(1);
     fill(0);
