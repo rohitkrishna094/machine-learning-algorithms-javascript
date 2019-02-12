@@ -27,7 +27,7 @@ function setup() {
     if (y < lineDef(x)) answer = -1;
     training[i] = new Trainer(x, y, answer);
   }
-  // smooth();
+  smooth();
 }
 
 function draw() {
